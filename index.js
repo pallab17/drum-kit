@@ -33,6 +33,7 @@ for(var i=0;i<drumLength;i++){
 
 
       makeAwaj(buttonInnerHTML);
+      buttonAnimation(buttonInnerHTML);
 
       
 
@@ -50,6 +51,7 @@ for(var i=0;i<drumLength;i++){
 // function 2
 document.addEventListener("keydown",function(event) {
                            makeAwaj(event.key);
+                           buttonAnimation(event.key);
              }) ;
 
 
@@ -110,3 +112,38 @@ document.addEventListener("keydown",function(event) {
 // ebar jodi ami normal keyboard diye j tipi then fn 2 e event.key e j jabe 
 // tarpor fn 2 j take pass korbe to fn 3 aar sound ber korbe jeta associate ache
 // j button on keyboard press r jonno
+
+
+
+// key/button/drum  ta press korle or click korle animation dekhanor fn
+function buttonAnimation(currentKey){
+
+
+      // target korchi kon key ta tipechi or click 
+      // korechi using  document.querySelector("." + currentKey);
+      // tarpor key take var activeButton r modhe save kore rakhchi
+        var activeButton =   document.querySelector("." + currentKey);
+
+
+      // adding class to a variable/element using js 
+      activeButton.classList.add("pressed");
+
+
+      // ekta problem hocche animation add hole ota off hocche na chipke boshe ache
+      // so to remove this amra timeout fn use korbo
+      // set timeout fn duto jinis neye to work
+      // ekta hocche kon fn/element/mal r opor kaj hobe
+      // second hocche koto time period r jonno in ms
+
+      setTimeout(function(){
+        // anonymous fn use korchi 
+        //je button ta tipchi suppose j seta jeno 100ms = 1s por animation off kore
+        // tai next line r code ta likhlam
+        activeButton.classList.remove("pressed"); // removing the animation class
+      },100); // after 100ms = 1s
+
+
+
+
+
+}
